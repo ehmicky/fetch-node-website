@@ -39,7 +39,8 @@ npm install fetch-node-website
 ## Node.js mirror
 
 The list is downloaded from `https://nodejs.org/dist`. You can specify a mirror
-website using the environment variable `NODE_MIRROR`, for example `NODE_MIRROR="https://npm.taobao.org/mirrors/node"`.
+website using the environment variable `NODE_MIRROR`, for example
+`NODE_MIRROR="https://npm.taobao.org/mirrors/node"`.
 
 # See also
 
@@ -47,6 +48,8 @@ website using the environment variable `NODE_MIRROR`, for example `NODE_MIRROR="
 - [`get-node`](https://github.com/ehmicky/get-node): Download Node.js
 - [`normalize-node-version`](https://github.com/ehmicky/normalize-node-versions):
   Normalize and validate Node.js versions
+- [`all-node-versions`](https://github.com/ehmicky/all-node-versions): List all
+  available Node.js versions
 
 # Support
 
