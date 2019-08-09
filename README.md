@@ -7,7 +7,8 @@
 
 Fetch releases on nodejs.org
 
-Download release files available on [`https://nodejs.org/dist/`](https://nodejs.org/dist/).
+Download release files available on
+[`https://nodejs.org/dist/`](https://nodejs.org/dist/).
 
 # Example
 
@@ -17,7 +18,9 @@ Download release files available on [`https://nodejs.org/dist/`](https://nodejs.
 ```js
 const fetchNodeWebsite = require('fetch-node-website')
 
-const fetchResponse = await fetchNodeWebsite('v12.8.0/node-v12.8.0-linux-x64.tar.gz')
+const fetchResponse = await fetchNodeWebsite(
+  'v12.8.0/node-v12.8.0-linux-x64.tar.gz',
+)
 ```
 
 # Install
@@ -30,8 +33,8 @@ npm install fetch-node-website
 
 ## fetchNodeWebsite(path)
 
-`path`: `{string}`<br>
-_Returns_: [`Promise<FetchResponse>`](https://developer.mozilla.org/en-US/docs/Web/API/Response)
+`path`: `{string}`<br> _Returns_:
+[`Promise<FetchResponse>`](https://developer.mozilla.org/en-US/docs/Web/API/Response)
 
 ## Node.js mirror
 
