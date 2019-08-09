@@ -39,11 +39,7 @@ npm install fetch-node-website
 ## Node.js mirror
 
 The list is downloaded from `https://nodejs.org/dist`. You can specify a mirror
-website using the environment variable `NODE_MIRROR`.
-
-```bash
-NODE_MIRROR="https://npm.taobao.org/mirrors/node" get-node [VERSION] [OUTPUT_DIRECTORY]
-```
+website using the environment variable `NODE_MIRROR`, for example `NODE_MIRROR="https://npm.taobao.org/mirrors/node"`.
 
 # See also
 
