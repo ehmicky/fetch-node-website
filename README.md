@@ -31,10 +31,18 @@ npm install fetch-node-website
 
 # Usage
 
-## fetchNodeWebsite(path)
+## fetchNodeWebsite(path, options?)
 
-`path`: `string`<br> _Returns_:
+`path`: `string`<br> `options`: `object`<br>_Returns_:
 [`Promise<FetchResponse>`](https://developer.mozilla.org/en-US/docs/Web/API/Response)
+
+### options
+
+#### progress
+
+_Type_: `boolean`<br>_Default_: `true`
+
+Show a loading spinner.
 
 ## Node.js mirror
 

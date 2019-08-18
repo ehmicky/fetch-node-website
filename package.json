@@ -51,13 +51,15 @@
   },
   "dependencies": {
     "core-js": "^3.2.1",
-    "cross-fetch": "^3.0.4"
+    "cross-fetch": "^3.0.4",
+    "ora": "^3.4.0"
   },
   "devDependencies": {
     "ava": "^2.3.0",
     "gulp": "^4.0.2",
     "gulp-shared-tasks": "^0.30.35",
-    "husky": "^3.0.4"
+    "husky": "^3.0.4",
+    "sinon": "^7.4.1"
   },
   "engines": {
     "node": ">=8.12.0"

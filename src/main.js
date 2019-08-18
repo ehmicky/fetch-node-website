@@ -2,8 +2,10 @@ import { env } from 'process'
 
 import fetch from 'cross-fetch'
 
+import { addSpinner } from './spinner.js'
+
 // Make a HTTP GET request towards `https://nodejs.org/dist/...`
-const fetchNodeWebsite = async function(path) {
+const fetchNodeWebsite = async function(path, { progress = true } = {}) {
   const url = getUrl(path)
 
   const response = await performFetch(url)
@@ -11,6 +13,8 @@ const fetchNodeWebsite = async function(path) {
   if (!response.ok) {
     throw new Error(`Could not fetch ${url} (status ${response.status})`)
   }
+
+  addSpinner(response, progress)
 
   return response
 }
