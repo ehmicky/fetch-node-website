@@ -5,6 +5,12 @@ import sinon from 'sinon'
 
 import fetchNodeWebsite from '../src/main.js'
 
+const fetchReleases = async function(url = 'index.json', progress = false) {
+  const response = await fetchNodeWebsite(url, { progress })
+  const releases = await response.json()
+  return releases
+}
+
 test('Error request', async t => {
   await t.throwsAsync(fetchNodeWebsite('\u0000', { progress: false }))
 })
@@ -20,14 +26,12 @@ test('Error response', async t => {
 })
 
 test('Success', async t => {
-  const response = await fetchNodeWebsite('index.json', { progress: false })
-  const releases = await response.json()
+  const releases = await fetchReleases()
   t.true(Array.isArray(releases))
 })
 
 test('Leading slashes', async t => {
-  const response = await fetchNodeWebsite('/index.json', { progress: false })
-  const releases = await response.json()
+  const releases = await fetchReleases('/index.json')
   t.true(Array.isArray(releases))
 })
 
@@ -35,8 +39,7 @@ test.serial('Empty mirror website', async t => {
   // eslint-disable-next-line fp/no-mutation
   env.NODE_MIRROR = ''
 
-  const response = await fetchNodeWebsite('index.json', { progress: false })
-  const releases = await response.json()
+  const releases = await fetchReleases()
   t.true(Array.isArray(releases))
 
   // eslint-disable-next-line fp/no-delete
@@ -47,8 +50,7 @@ test.serial('Mirror website', async t => {
   // eslint-disable-next-line fp/no-mutation
   env.NODE_MIRROR = 'https://npm.taobao.org/mirrors/node'
 
-  const response = await fetchNodeWebsite('index.json', { progress: false })
-  const releases = await response.json()
+  const releases = await fetchReleases()
   t.true(Array.isArray(releases))
 
   // eslint-disable-next-line fp/no-delete
