@@ -18,9 +18,7 @@ Download release files available on
 ```js
 const fetchNodeWebsite = require('fetch-node-website')
 
-const fetchResponse = await fetchNodeWebsite(
-  'v12.8.0/node-v12.8.0-linux-x64.tar.gz',
-)
+const stream = await fetchNodeWebsite('v12.8.0/node-v12.8.0-linux-x64.tar.gz')
 ```
 
 # Install
@@ -33,8 +31,7 @@ npm install fetch-node-website
 
 ## fetchNodeWebsite(path, options?)
 
-`path`: `string`<br> `options`: `object`<br>_Returns_:
-[`Promise<FetchResponse>`](https://developer.mozilla.org/en-US/docs/Web/API/Response)
+`path`: `string`<br> `options`: `object`<br>_Returns_: `Promise<Stream>`
 
 ### options
 

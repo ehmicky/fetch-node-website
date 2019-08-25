@@ -1,49 +1,28 @@
 import { env } from 'process'
 
-import fetch from 'cross-fetch'
+import got from 'got'
 
 import { addSpinner } from './spinner.js'
 
 // Make a HTTP GET request towards `https://nodejs.org/dist/...`
 const fetchNodeWebsite = async function(path, { progress = true } = {}) {
-  const url = getUrl(path)
-
-  const response = await performFetch(url)
-
-  if (!response.ok) {
-    throw new Error(`Could not fetch ${url} (status ${response.status})`)
-  }
+  const baseUrl = getBaseUrl()
+  const response = await got(path, { baseUrl, stream: true })
 
   addSpinner(response, progress)
 
   return response
 }
 
-const getUrl = function(path) {
-  const domain = getDomain()
-  const pathA = path.replace(STARTING_SLASH, '')
-  return `${domain}/${pathA}`
-}
-
-const getDomain = function() {
+const getBaseUrl = function() {
   if (env.NODE_MIRROR !== undefined && env.NODE_MIRROR !== '') {
     return env.NODE_MIRROR
   }
 
-  return DEFAULT_DOMAIN
+  return DEFAULT_BASE_URL
 }
 
-const DEFAULT_DOMAIN = 'https://nodejs.org/dist'
-
-const STARTING_SLASH = /^\/+/u
-
-const performFetch = async function(url) {
-  try {
-    return await fetch(url)
-  } catch (error) {
-    throw new Error(`Could not fetch ${url}\n\n${error.stack}`)
-  }
-}
+const DEFAULT_BASE_URL = 'https://nodejs.org/dist'
 
 // We do not use `export default` because Babel transpiles it in a way that
 // requires CommonJS users to `require(...).default` instead of `require(...)`.
