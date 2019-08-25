@@ -1,6 +1,7 @@
 import { env, stderr } from 'process'
 
 import test from 'ava'
+import { each } from 'test-each'
 import sinon from 'sinon'
 import getStream from 'get-stream'
 
@@ -13,76 +14,55 @@ const fetchReleases = async function(url, opts) {
   return releases
 }
 
-test('Error request', async t => {
-  await t.throwsAsync(fetchReleases('\u0000', { progress: false }))
+each(
+  [
+    '\u0000',
+    // This release does not exist. We make a request that looks legit so we are
+    // not blocked.
+    'v12.7.1/node-v12.7.1-linux-x64.tar.gz',
+  ],
+  ({ title }, url) => {
+    test(`Error request | ${title}`, async t => {
+      await t.throwsAsync(fetchReleases(url, { progress: false }))
+    })
+  },
+)
+
+each(['index.json', '/index.json'], ({ title }, url) => {
+  test(`Success request | ${title}`, async t => {
+    const releases = await fetchReleases(url, { progress: false })
+    t.true(Array.isArray(releases))
+  })
 })
 
-test('Error response', async t => {
-  // This release does not exist. We make a request that looks legit so we are
-  // not blocked.
-  await t.throwsAsync(
-    fetchReleases('v12.7.1/node-v12.7.1-linux-x64.tar.gz', { progress: false }),
-  )
+each(['', 'https://npm.taobao.org/mirrors/node'], ({ title }, mirror) => {
+  test.serial(`Mirror website | ${title}`, async t => {
+    // eslint-disable-next-line fp/no-mutation
+    env.NODE_MIRROR = mirror
+
+    const releases = await fetchReleases('index.json', { progress: false })
+    t.true(Array.isArray(releases))
+
+    // eslint-disable-next-line fp/no-delete
+    delete env.NODE_MIRROR
+  })
 })
 
-test('Success', async t => {
-  const releases = await fetchReleases('index.json', { progress: false })
-  t.true(Array.isArray(releases))
-})
+each(
+  [
+    { opts: { progress: false }, called: false },
+    { opts: { progress: true }, called: true },
+    { called: true },
+  ],
+  ({ title }, { opts, called }) => {
+    test.serial(`Spinner | ${title}`, async t => {
+      const spy = sinon.spy(stderr, 'write')
 
-test('Leading slashes', async t => {
-  const releases = await fetchReleases('/index.json', { progress: false })
-  t.true(Array.isArray(releases))
-})
+      await fetchReleases('index.json', opts)
 
-test.serial('Empty mirror website', async t => {
-  // eslint-disable-next-line fp/no-mutation
-  env.NODE_MIRROR = ''
+      t.is(spy.called, called)
 
-  const releases = await fetchReleases('index.json', { progress: false })
-  t.true(Array.isArray(releases))
-
-  // eslint-disable-next-line fp/no-delete
-  delete env.NODE_MIRROR
-})
-
-test.serial('Mirror website', async t => {
-  // eslint-disable-next-line fp/no-mutation
-  env.NODE_MIRROR = 'https://npm.taobao.org/mirrors/node'
-
-  const releases = await fetchReleases('index.json', { progress: false })
-  t.true(Array.isArray(releases))
-
-  // eslint-disable-next-line fp/no-delete
-  delete env.NODE_MIRROR
-})
-
-test.serial('Do not show spinner if opts.progress false', async t => {
-  const spy = sinon.spy(stderr, 'write')
-
-  await fetchReleases('index.json', { progress: false })
-
-  t.true(spy.notCalled)
-
-  spy.restore()
-})
-
-test.serial('Show spinner if opts.progress true', async t => {
-  const spy = sinon.spy(stderr, 'write')
-
-  await fetchReleases('index.json', { progress: true })
-
-  t.true(spy.called)
-
-  spy.restore()
-})
-
-test.serial('Show spinner by default', async t => {
-  const spy = sinon.spy(stderr, 'write')
-
-  await fetchReleases('index.json')
-
-  t.true(spy.called)
-
-  spy.restore()
-})
+      spy.restore()
+    })
+  },
+)
