@@ -35,18 +35,27 @@ each(['index.json', '/index.json'], ({ title }, url) => {
   })
 })
 
-each(['', 'https://npm.taobao.org/mirrors/node'], ({ title }, mirror) => {
-  test.serial(`Mirror website | ${title}`, async t => {
-    // eslint-disable-next-line fp/no-mutation
-    env.NODE_MIRROR = mirror
+each(
+  ['', 'https://npm.taobao.org/mirrors/node'],
+  [
+    'NODE_MIRROR',
+    'NVM_NODEJS_ORG_MIRROR',
+    'N_NODE_MIRROR',
+    'NODIST_NODE_MIRROR',
+  ],
+  ({ title }, mirror, envName) => {
+    test.serial(`Mirror website | ${title}`, async t => {
+      // eslint-disable-next-line fp/no-mutation
+      env[envName] = mirror
 
-    const releases = await fetchReleases('index.json', { progress: false })
-    t.true(Array.isArray(releases))
+      const releases = await fetchReleases('index.json', { progress: false })
+      t.true(Array.isArray(releases))
 
-    // eslint-disable-next-line fp/no-delete
-    delete env.NODE_MIRROR
-  })
-})
+      // eslint-disable-next-line fp/no-delete
+      delete env[envName]
+    })
+  },
+)
 
 each(
   [

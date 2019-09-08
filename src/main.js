@@ -15,11 +15,24 @@ const fetchNodeWebsite = async function(path, { progress = true } = {}) {
 }
 
 const getBaseUrl = function() {
-  if (env.NODE_MIRROR !== undefined && env.NODE_MIRROR !== '') {
-    return env.NODE_MIRROR
+  const mirror = MIRRORS.find(isDefinedEnv)
+
+  if (mirror !== undefined) {
+    return env[mirror]
   }
 
   return DEFAULT_BASE_URL
+}
+
+const MIRRORS = [
+  'NODE_MIRROR',
+  'NVM_NODEJS_ORG_MIRROR',
+  'N_NODE_MIRROR',
+  'NODIST_NODE_MIRROR',
+]
+
+const isDefinedEnv = function(name) {
+  return env[name] !== undefined && env[name].trim() !== ''
 }
 
 const DEFAULT_BASE_URL = 'https://nodejs.org/dist'
