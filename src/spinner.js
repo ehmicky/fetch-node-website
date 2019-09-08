@@ -7,16 +7,18 @@ import endOfStream from 'end-of-stream'
 const pEndOfStream = promisify(endOfStream)
 
 // Add CLI spinner showing download progress
-export const addSpinner = async function(response, progress) {
+export const addSpinner = async function(response, progress, path) {
   if (!progress) {
     return
   }
+
+  const text = getText(path)
 
   const spinner = ora({ color: 'green', spinner: 'star' })
   spinner.start()
 
   response.on('downloadProgress', ({ transferred }) => {
-    updateSpinner(spinner, transferred)
+    updateSpinner(spinner, transferred, text)
   })
 
   // TODO: use try/finally after dropping support for Node 8/9
@@ -31,12 +33,32 @@ export const addSpinner = async function(response, progress) {
   }
 }
 
-const updateSpinner = function(spinner, transferred) {
-  // eslint-disable-next-line fp/no-mutation, no-param-reassign
-  spinner.text = `${TEXT} ${getMegabytes(transferred)}`
+// Retrieve the text shown next to the spinner
+const getText = function(path) {
+  const version = VERSION_TEXT_REGEXP.exec(path)
+
+  if (version !== null) {
+    return `${VERSION_TEXT} ${version[1]}...`
+  }
+
+  if (INDEX_TEXT_REGEXP.test(path)) {
+    return INDEX_TEXT
+  }
+
+  return DEFAULT_TEXT
 }
 
-const TEXT = 'Downloading Node.js...'
+const VERSION_TEXT_REGEXP = /^\/?v([\d.]+)\//u
+const INDEX_TEXT_REGEXP = /^\/?index.(json|tab)$/u
+
+const VERSION_TEXT = 'Downloading Node.js'
+const INDEX_TEXT = 'Downloading list of Node.js versions...'
+const DEFAULT_TEXT = 'Downloading Node.js...'
+
+const updateSpinner = function(spinner, transferred, text) {
+  // eslint-disable-next-line fp/no-mutation, no-param-reassign
+  spinner.text = `${text} ${getMegabytes(transferred)}`
+}
 
 const getMegabytes = function(size) {
   const sizeA = Math.floor(size / BYTES_TO_MEGABYTES)

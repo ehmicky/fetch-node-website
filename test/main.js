@@ -8,10 +8,15 @@ import getStream from 'get-stream'
 import fetchNodeWebsite from '../src/main.js'
 
 const fetchReleases = async function(url, opts) {
-  const response = await fetchNodeWebsite(url, opts)
-  const content = await getStream(response)
+  const content = await fetchUrl(url, opts)
   const releases = JSON.parse(content)
   return releases
+}
+
+const fetchUrl = async function(url, opts) {
+  const response = await fetchNodeWebsite(url, opts)
+  const content = await getStream(response)
+  return content
 }
 
 each(
@@ -63,11 +68,17 @@ each(
     { opts: { progress: true }, called: true },
     { called: true },
   ],
-  ({ title }, { opts, called }) => {
+  [
+    'index.json',
+    '/index.json',
+    'v10.0.0/node-v10.0.0-headers.tar.xz',
+    'npm/npm-1.1.0-1.zip',
+  ],
+  ({ title }, { opts, called }, path) => {
     test.serial(`Spinner | ${title}`, async t => {
       const spy = sinon.spy(stderr, 'write')
 
-      await fetchReleases('index.json', opts)
+      await fetchUrl(path, opts)
 
       t.is(spy.called, called)
 

@@ -9,7 +9,7 @@ const fetchNodeWebsite = async function(path, { progress = true } = {}) {
   const baseUrl = getBaseUrl()
   const response = await got(path, { baseUrl, stream: true })
 
-  addSpinner(response, progress)
+  addSpinner(response, progress, path)
 
   return response
 }
