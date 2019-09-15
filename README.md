@@ -21,6 +21,8 @@ const fetchNodeWebsite = require('fetch-node-website')
 const stream = await fetchNodeWebsite('v12.8.0/node-v12.8.0-linux-x64.tar.gz')
 ```
 
+<!-- eslint-skip -->
+
 ```js
 const stream = await fetchNodeWebsite('v12.8.0/node-v12.8.0-linux-x64.tar.gz', {
   progress: false,
