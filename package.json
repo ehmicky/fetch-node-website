@@ -53,6 +53,7 @@
     "core-js": "^3.2.1",
     "end-of-stream": "^1.4.1",
     "got": "^9.6.0",
+    "jest-validate": "^24.9.0",
     "ora": "^3.4.0"
   },
   "devDependencies": {

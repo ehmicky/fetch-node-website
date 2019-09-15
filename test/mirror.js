@@ -5,8 +5,10 @@ import { each } from 'test-each'
 
 import { fetchReleases } from './helpers/main.js'
 
+const MIRROR_PATH = 'https://npm.taobao.org/mirrors/node'
+
 each(
-  ['', 'https://npm.taobao.org/mirrors/node'],
+  ['', MIRROR_PATH],
   [
     'NODE_MIRROR',
     'NVM_NODEJS_ORG_MIRROR',
@@ -14,15 +16,26 @@ each(
     'NODIST_NODE_MIRROR',
   ],
   ({ title }, mirror, envName) => {
-    test.serial(`Mirror website | ${title}`, async t => {
-      // eslint-disable-next-line fp/no-mutation
-      env[envName] = mirror
+    test.serial(
+      `Mirror website as environment variable | ${title}`,
+      async t => {
+        // eslint-disable-next-line fp/no-mutation
+        env[envName] = mirror
 
-      const releases = await fetchReleases('index.json', { progress: false })
-      t.true(Array.isArray(releases))
+        const releases = await fetchReleases('index.json', { progress: false })
+        t.true(Array.isArray(releases))
 
-      // eslint-disable-next-line fp/no-delete
-      delete env[envName]
-    })
+        // eslint-disable-next-line fp/no-delete
+        delete env[envName]
+      },
+    )
   },
 )
+
+test(`Mirror website as option`, async t => {
+  const releases = await fetchReleases('index.json', {
+    progress: false,
+    mirror: MIRROR_PATH,
+  })
+  t.true(Array.isArray(releases))
+})

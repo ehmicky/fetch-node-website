@@ -1,3 +1,9 @@
+# 2.2.0
+
+## Features
+
+- Allow mirrors to be specified via a `mirror` option.
+
 # 2.1.0
 
 ## Features

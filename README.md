@@ -21,6 +21,13 @@ const fetchNodeWebsite = require('fetch-node-website')
 const stream = await fetchNodeWebsite('v12.8.0/node-v12.8.0-linux-x64.tar.gz')
 ```
 
+```js
+const stream = await fetchNodeWebsite('v12.8.0/node-v12.8.0-linux-x64.tar.gz', {
+  progress: false,
+  mirror: 'https://npm.taobao.org/mirrors/node',
+})
+```
+
 # Install
 
 ```bash
@@ -41,11 +48,15 @@ _Type_: `boolean`<br>_Default_: `true`
 
 Show a loading spinner.
 
-## Node.js mirror
+#### mirror
 
-The list is downloaded from `https://nodejs.org/dist`. You can specify a mirror
-website using the environment variable `NODE_MIRROR`, for example
-`NODE_MIRROR="https://npm.taobao.org/mirrors/node"`.
+_Type_: `string`<br>_Default_: `https://nodejs.org/dist`
+
+Base URL. Can be customized (for example
+`https://npm.taobao.org/mirrors/node"`).
+
+The following environment variables can also be used: `NODE_MIRROR`,
+`NVM_NODEJS_ORG_MIRROR`, `N_NODE_MIRROR` or `NODIST_NODE_MIRROR`.
 
 # See also
 
