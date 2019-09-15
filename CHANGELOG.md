@@ -1,3 +1,9 @@
+# 2.2.1
+
+## Features
+
+- Improve CLI spinner
+
 # 2.2.0
 
 ## Features
