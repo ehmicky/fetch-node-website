@@ -34,7 +34,7 @@ each(
 test('Spinners in parallel', async t => {
   const spy = sinon.spy(stderr, 'write')
 
-  await Promise.all(Array.from({ length: 10 }, () => fetchUrl('index.json')))
+  await Promise.all(Array.from({ length: 100 }, () => fetchUrl('index.json')))
 
   t.is(spy.called, true)
 
