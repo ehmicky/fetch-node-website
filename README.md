@@ -52,11 +52,9 @@ Show a loading spinner.
 
 #### mirror
 
-_Type_: `string`<br>_Default_:
-[`https://nodejs.org/dist`](https://nodejs.org/dist)
+_Type_: `string`<br>_Default_: `https://nodejs.org/dist`
 
-Base URL. Can be customized (for example
-[`https://npm.taobao.org/mirrors/node`](https://npm.taobao.org/mirrors/node)).
+Base URL. Can be customized (for example `https://npm.taobao.org/mirrors/node`).
 
 The following environment variables can also be used: `NODE_MIRROR`,
 `NVM_NODEJS_ORG_MIRROR`, `N_NODE_MIRROR` or `NODIST_NODE_MIRROR`.
