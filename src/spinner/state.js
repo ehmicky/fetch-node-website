@@ -24,11 +24,11 @@ const startSpinner = function(spinner) {
 }
 
 const stopSpinner = function(spinner) {
-  if (!spinner.isSpinning) {
-    return
+  // In CI, ora spinners are always disabled
+  // istanbul ignore next
+  if (spinner.isSpinning) {
+    spinner.stop()
   }
-
-  spinner.stop()
 }
 
 // eslint-disable-next-line fp/no-let
