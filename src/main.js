@@ -1,7 +1,7 @@
 import got from 'got'
 
 import { getOpts } from './options.js'
-import { addSpinner } from './spinner.js'
+import { addSpinner } from './spinner/main.js'
 
 // Make a HTTP GET request towards `https://nodejs.org/dist/...`
 const fetchNodeWebsite = async function(path, opts) {
