@@ -15,7 +15,7 @@ export const addSpinner = async function(response, progress, path) {
   const text = getText(path)
 
   const spinner = ora({ color: 'green', spinner: 'star', discardStdin: false })
-  spinner.start()
+  pushSpinner(spinner)
 
   response.on('downloadProgress', ({ transferred }) => {
     updateSpinner(spinner, transferred, text)
@@ -24,14 +24,48 @@ export const addSpinner = async function(response, progress, path) {
   // TODO: use try/finally after dropping support for Node 8/9
   try {
     await pEndOfStream(response, { writable: false })
-    spinner.stop()
+    popSpinner(spinner)
   } catch {
     // This happens when a network error happens in the middle of the download,
     // which is hard to simulate in tests
     // istanbul ignore next
-    spinner.stop()
+    popSpinner(spinner)
   }
 }
+
+const pushSpinner = function(spinner) {
+  // eslint-disable-next-line fp/no-mutating-methods
+  spinners.push(spinner)
+  startSpinner(spinners[0])
+}
+
+const popSpinner = function(spinner) {
+  stopSpinner(spinner)
+  // eslint-disable-next-line fp/no-mutation
+  spinners = spinners.filter(spinnerA => spinnerA !== spinner)
+  startSpinner(spinners[0])
+}
+
+// When several `fetch-node-website` calls are done in parallel, we ensure
+// only one spinner is shown at once
+const startSpinner = function(spinner) {
+  if (spinner === undefined || spinner.isSpinning) {
+    return
+  }
+
+  spinner.start()
+}
+
+const stopSpinner = function(spinner) {
+  if (!spinner.isSpinning) {
+    return
+  }
+
+  spinner.stop()
+}
+
+// eslint-disable-next-line fp/no-let
+let spinners = []
 
 // Retrieve the text shown next to the spinner
 const getText = function(path) {

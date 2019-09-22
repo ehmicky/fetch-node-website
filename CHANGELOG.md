@@ -1,3 +1,9 @@
+# 2.3.0
+
+## Features
+
+- Only show one spinner at once when called several times in parallel
+
 # 2.2.2
 
 ## Bugs
