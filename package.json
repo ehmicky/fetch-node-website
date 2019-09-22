@@ -54,7 +54,7 @@
     "end-of-stream": "^1.4.1",
     "got": "^9.6.0",
     "jest-validate": "^24.9.0",
-    "ora": "^4.0.0"
+    "ora": "^4.0.1"
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^0.30.43",
