@@ -14,7 +14,7 @@ export const addSpinner = async function(response, progress, path) {
 
   const text = getText(path)
 
-  const spinner = ora({ color: 'green', spinner: 'star' })
+  const spinner = ora({ color: 'green', spinner: 'star', discardStdin: false })
   spinner.start()
 
   response.on('downloadProgress', ({ transferred }) => {
