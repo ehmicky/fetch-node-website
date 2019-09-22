@@ -1,3 +1,9 @@
+# 2.3.1
+
+## Internal
+
+- Internal changes
+
 # 2.3.0
 
 ## Features
