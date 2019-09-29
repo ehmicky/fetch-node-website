@@ -57,7 +57,7 @@
     "ora": "^4.0.2"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^0.30.45",
+    "@ehmicky/dev-tasks": "^0.30.46",
     "ava": "^2.4.0",
     "get-stream": "^5.1.0",
     "gulp": "^4.0.2",
