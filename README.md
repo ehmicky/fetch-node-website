@@ -24,7 +24,7 @@ const stream = await fetchNodeWebsite('v12.8.0/node-v12.8.0-linux-x64.tar.gz')
 const otherStream = await fetchNodeWebsite(
   'v12.8.0/node-v12.8.0-linux-x64.tar.gz',
   {
-    progress: false,
+    progress: true,
     mirror: 'https://npm.taobao.org/mirrors/node',
   },
 )
@@ -46,7 +46,7 @@ npm install fetch-node-website
 
 #### progress
 
-_Type_: `boolean`<br>_Default_: `true`
+_Type_: `boolean`<br>_Default_: `false`
 
 Show a loading spinner.
 

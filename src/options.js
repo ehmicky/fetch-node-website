@@ -19,7 +19,7 @@ const validateBasic = function(path) {
 }
 
 export const DEFAULT_OPTS = {
-  progress: true,
+  progress: false,
   mirror: 'https://nodejs.org/dist',
 }
 

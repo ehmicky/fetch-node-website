@@ -22,7 +22,7 @@ each(
         // eslint-disable-next-line fp/no-mutation
         env[envName] = mirror
 
-        const releases = await fetchReleases('index.json', { progress: false })
+        const releases = await fetchReleases('index.json')
         t.true(Array.isArray(releases))
 
         // eslint-disable-next-line fp/no-delete
@@ -33,9 +33,6 @@ each(
 )
 
 test(`Mirror website as option`, async t => {
-  const releases = await fetchReleases('index.json', {
-    progress: false,
-    mirror: MIRROR_PATH,
-  })
+  const releases = await fetchReleases('index.json', { mirror: MIRROR_PATH })
   t.true(Array.isArray(releases))
 })

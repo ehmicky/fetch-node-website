@@ -5,7 +5,7 @@ import { fetchReleases } from './helpers/main.js'
 
 each(['index.json', '/index.json'], ({ title }, url) => {
   test(`Success request | ${title}`, async t => {
-    const releases = await fetchReleases(url, { progress: false })
+    const releases = await fetchReleases(url)
     t.true(Array.isArray(releases))
   })
 })
@@ -19,7 +19,7 @@ each(
   ],
   ({ title }, url) => {
     test(`Error request | ${title}`, async t => {
-      await t.throwsAsync(fetchReleases(url, { progress: false }))
+      await t.throwsAsync(fetchReleases(url))
     })
   },
 )

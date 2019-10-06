@@ -1,3 +1,11 @@
+# 3.0.0
+
+## Breaking changes
+
+- Change the
+  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/master/README.md#progress)
+  default value from `true` to `false`. That option displays a loading spinner.
+
 # 2.3.1
 
 ## Internal
