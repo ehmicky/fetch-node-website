@@ -1,3 +1,9 @@
+# 3.1.0
+
+## Features
+
+- Show percentage instead of number of megabytes in spinner
+
 # 3.0.0
 
 ## Breaking changes
