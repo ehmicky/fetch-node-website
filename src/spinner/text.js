@@ -1,6 +1,7 @@
 // Retrieve the text shown next to the spinner
-export const getText = function(path, transferred) {
-  return `${getPrefix(path)} ${getMegabytes(transferred)}`
+export const getText = function(path, percent) {
+  const percentage = getPercentage(percent)
+  return `${getPrefix(path)} ${percentage}`
 }
 
 const getPrefix = function(path) {
@@ -24,10 +25,11 @@ const VERSION_TEXT = 'Downloading Node.js'
 const INDEX_TEXT = 'Downloading list of Node.js versions...'
 const DEFAULT_TEXT = 'Downloading Node.js...'
 
-const getMegabytes = function(transferred) {
-  const size = Math.floor(transferred / BYTES_TO_MEGABYTES)
-  return `${String(size).padStart(2)}MB`
+const getPercentage = function(percent) {
+  const percentage = Math.floor(percent * NUM_TO_PERCENTAGE)
+  const percentageA = String(percentage).padStart(PERCENTAGE_WIDTH)
+  return `${percentageA}%`
 }
 
-// eslint-disable-next-line no-magic-numbers
-const BYTES_TO_MEGABYTES = 1024 ** 2
+const NUM_TO_PERCENTAGE = 1e2
+const PERCENTAGE_WIDTH = 3

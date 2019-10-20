@@ -18,8 +18,8 @@ export const addSpinner = async function(response, progress, path) {
   const spinner = ora({ color: 'green', spinner: 'star', discardStdin: false })
   pushSpinner(spinner)
 
-  response.on('downloadProgress', ({ transferred }) => {
-    updateSpinner(spinner, path, transferred)
+  response.on('downloadProgress', ({ percent }) => {
+    updateSpinner(spinner, path, percent)
   })
 
   // TODO: use try/finally after dropping support for Node 8/9
@@ -34,7 +34,7 @@ export const addSpinner = async function(response, progress, path) {
   }
 }
 
-const updateSpinner = function(spinner, path, transferred) {
+const updateSpinner = function(spinner, path, percent) {
   // eslint-disable-next-line fp/no-mutation, no-param-reassign
-  spinner.text = getText(path, transferred)
+  spinner.text = getText(path, percent)
 }
