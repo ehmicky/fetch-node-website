@@ -1,3 +1,11 @@
+# 3.2.1
+
+## Bug fixes
+
+- The
+  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/master/README.md#progress)
+  was not working in non-interactive terminals.
+
 # 3.2.0
 
 ## Features
