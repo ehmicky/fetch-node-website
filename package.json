@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "cli-progress": "^3.3.1",
-    "core-js": "^3.3.5",
+    "core-js": "^3.3.6",
     "end-of-stream": "^1.4.4",
     "got": "^9.6.0",
     "jest-validate": "^24.9.0"
