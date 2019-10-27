@@ -3,6 +3,8 @@ import { promisify } from 'util'
 import { MultiBar } from 'cli-progress'
 // TODO: replace with `Stream.finished()` after dropping support for Node 8/9
 import endOfStream from 'end-of-stream'
+import { green, dim } from 'chalk'
+import { nodejs } from 'figures'
 
 const pEndOfStream = promisify(endOfStream)
 
@@ -27,7 +29,9 @@ export const addProgress = async function(response, progress, path) {
 }
 
 const MULTIBAR_OPTS = {
-  format: '  {prefix}   {bar}  {percentage}%',
+  format: `  ${green(nodejs)}  {prefix} ${dim('|')} {percentage}%  ${green(
+    '{bar}',
+  )}`,
   barCompleteChar: '\u2588',
   barIncompleteChar: '\u2591',
   stopOnComplete: true,
@@ -59,7 +63,7 @@ const getPrefix = function(path) {
   const version = VERSION_TEXT_REGEXP.exec(path)
 
   if (version !== null) {
-    return `${VERSION_TEXT} ${version[1].padStart(VERSION_PADDING)}`
+    return `${VERSION_TEXT} ${version[1].padEnd(VERSION_PADDING)}`
   }
 
   if (INDEX_TEXT_REGEXP.test(path)) {
@@ -73,9 +77,9 @@ const VERSION_TEXT_REGEXP = /^\/?v([\d.]+)\//u
 const INDEX_TEXT_REGEXP = /^\/?index.(json|tab)$/u
 const VERSION_PADDING = 7
 
-const VERSION_TEXT = 'Downloading Node.js'
-const INDEX_TEXT = 'Downloading list of Node.js versions'
-const DEFAULT_TEXT = 'Downloading Node.js'
+const VERSION_TEXT = 'Node.js'
+const INDEX_TEXT = 'List of Node.js versions'
+const DEFAULT_TEXT = 'Node.js'
 
 // Remove a new progress bar when a download is complete
 const stopBar = function(bar) {
