@@ -1,7 +1,7 @@
 import got from 'got'
 
 import { getOpts } from './options.js'
-import { addSpinner } from './spinner/main.js'
+import { addProgress } from './progress.js'
 
 // Make a HTTP GET request towards `https://nodejs.org/dist/...`
 const fetchNodeWebsite = async function(path, opts) {
@@ -9,7 +9,7 @@ const fetchNodeWebsite = async function(path, opts) {
 
   const response = await got(path, { baseUrl: mirror, stream: true })
 
-  addSpinner(response, progress, path)
+  addProgress(response, progress, path)
 
   return response
 }
