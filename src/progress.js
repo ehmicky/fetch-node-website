@@ -85,4 +85,9 @@ const DEFAULT_TEXT = 'Node.js'
 const stopBar = function(bar) {
   bar.stop()
   multibar.remove(bar)
+
+  // Otherwise the progress bar is creating an empty line
+  if (multibar.bars.length === 0) {
+    multibar.stop()
+  }
 }
