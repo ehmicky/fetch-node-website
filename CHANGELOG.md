@@ -1,3 +1,9 @@
+# 3.3.1
+
+## Bug fixes
+
+- Fix progress bar jitter.
+
 # 3.3.0
 
 ## Features
