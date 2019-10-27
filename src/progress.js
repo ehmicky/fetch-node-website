@@ -9,7 +9,7 @@ const pEndOfStream = promisify(endOfStream)
 // Add CLI progress bar.
 // If there are several downloads in parallel, several bars are shown.
 export const addProgress = async function(response, progress, path) {
-  if (!progress) {
+  if (!progress || !showsBar()) {
     return
   }
 
@@ -47,6 +47,11 @@ const startBar = function(path) {
   const prefix = getPrefix(path)
   bar.start(1, 0, { prefix })
   return bar
+}
+
+// `cli-progress` does nothing when not inside a TTY
+const showsBar = function() {
+  return multibar.terminal.isTTY()
 }
 
 // Retrieve the text shown before the progress bar

@@ -8,8 +8,8 @@ import { fetchUrl } from './helpers/main.js'
 
 each(
   [
+    ...(stderr.isTTY ? [{ opts: { progress: true }, called: true }] : []),
     { opts: { progress: false }, called: false },
-    { opts: { progress: true }, called: true },
     { called: false },
   ],
   [
@@ -31,16 +31,18 @@ each(
   },
 )
 
-test('Progress bars in parallel', async t => {
-  const spy = sinon.spy(stderr, 'write')
+if (stderr.isTTY) {
+  test('Progress bars in parallel', async t => {
+    const spy = sinon.spy(stderr, 'write')
 
-  await Promise.all(
-    Array.from({ length: 10 }, () =>
-      fetchUrl('index.json', { progress: true }),
-    ),
-  )
+    await Promise.all(
+      Array.from({ length: 10 }, () =>
+        fetchUrl('index.json', { progress: true }),
+      ),
+    )
 
-  t.is(spy.called, true)
+    t.is(spy.called, true)
 
-  spy.restore()
-})
+    spy.restore()
+  })
+}
