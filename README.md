@@ -48,7 +48,7 @@ npm install fetch-node-website
 
 _Type_: `boolean`<br>_Default_: `false`
 
-Show a loading spinner.
+Show a progress bar.
 
 #### mirror
 
