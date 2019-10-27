@@ -1,3 +1,10 @@
+# 3.3.0
+
+## Features
+
+- Improve the appearance of the progress bar with the
+  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/master/README.md#progress).
+
 # 3.2.1
 
 ## Bug fixes
