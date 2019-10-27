@@ -1,3 +1,11 @@
+# 3.2.0
+
+## Features
+
+- The
+  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/master/README.md#progress)
+  now displays a progress bar instead of a spinner.
+
 # 3.1.0
 
 ## Features
