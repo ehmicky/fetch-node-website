@@ -67,6 +67,7 @@ The following environment variables can also be used: `NODE_MIRROR`,
   Normalize and validate Node.js versions
 - [`all-node-versions`](https://github.com/ehmicky/all-node-versions): List all
   available Node.js versions
+- [`execa`](https://github.com/sindresorhus/execa): Process execution for humans
 
 # Support
 
