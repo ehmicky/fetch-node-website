@@ -18,7 +18,7 @@ export const addProgress = async function(response, progress, path) {
   const bar = startBar(path)
 
   response.on('downloadProgress', ({ percent }) => {
-    bar.update(percent)
+    updateBar(bar, percent)
   })
 
   try {
@@ -29,9 +29,9 @@ export const addProgress = async function(response, progress, path) {
 }
 
 const MULTIBAR_OPTS = {
-  format: `  ${green(nodejs)}  {prefix} ${dim('|')} {percentage}%  ${green(
-    '{bar}',
-  )}`,
+  format: `  ${green(nodejs)}  {prefix} ${dim(
+    '|',
+  )} {percentageString}%  ${green('{bar}')}`,
   barCompleteChar: '\u2588',
   barIncompleteChar: '\u2591',
   stopOnComplete: true,
@@ -49,7 +49,8 @@ const multibar = new MultiBar(MULTIBAR_OPTS)
 const startBar = function(path) {
   const bar = multibar.create()
   const prefix = getPrefix(path)
-  bar.start(1, 0, { prefix })
+  const percentageString = getPercentageString(0)
+  bar.start(1, 0, { prefix, percentageString })
   return bar
 }
 
@@ -80,6 +81,19 @@ const VERSION_PADDING = 7
 const VERSION_TEXT = 'Node.js'
 const INDEX_TEXT = 'List of Node.js versions'
 const DEFAULT_TEXT = 'Node.js'
+
+const updateBar = function(bar, percent) {
+  const percentageString = getPercentageString(percent)
+  bar.update(percent, { percentageString })
+}
+
+// We cannot use `cli-progress` built-in `{percentage}` placeholder because it
+// lacks padding, i.e. creates jitter
+const getPercentageString = function(percent) {
+  return String(Math.floor(percent * PERCENT_TO_INTEGER)).padStart(2)
+}
+
+const PERCENT_TO_INTEGER = 1e2
 
 // Remove a new progress bar when a download is complete
 const stopBar = function(bar) {
