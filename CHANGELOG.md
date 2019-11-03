@@ -1,3 +1,9 @@
+# 4.0.0
+
+## Breaking changes
+
+- Upgrade `got` to `10.0.0-alpha.2.2`.
+
 # 3.3.1
 
 ## Bug fixes
