@@ -7,12 +7,15 @@ import { addProgress } from './progress.js'
 const fetchNodeWebsite = async function(path, opts) {
   const { mirror, progress } = getOpts(path, opts)
 
-  const response = await got(path, { baseUrl: mirror, stream: true })
+  const pathA = path.replace(LEADING_SLASH_REGEXP, '')
+  const response = await got(pathA, { prefixUrl: mirror, stream: true })
 
   addProgress(response, progress, path)
 
   return response
 }
+
+const LEADING_SLASH_REGEXP = /^\//u
 
 // We do not use `export default` because Babel transpiles it in a way that
 // requires CommonJS users to `require(...).default` instead of `require(...)`.
