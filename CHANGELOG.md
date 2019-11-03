@@ -1,3 +1,9 @@
+# 4.1.0
+
+## Features
+
+- Improve the appearance of the progress bar
+
 # 4.0.0
 
 ## Breaking changes

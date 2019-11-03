@@ -3,7 +3,7 @@ import { promisify } from 'util'
 import { MultiBar } from 'cli-progress'
 // TODO: replace with `Stream.finished()` after dropping support for Node 8/9
 import endOfStream from 'end-of-stream'
-import { green, dim } from 'chalk'
+import { green } from 'chalk'
 import { nodejs } from 'figures'
 
 const pEndOfStream = promisify(endOfStream)
@@ -18,7 +18,7 @@ export const addProgress = async function(response, progress, path) {
   const bar = startBar(path)
 
   response.on('downloadProgress', ({ percent }) => {
-    updateBar(bar, percent)
+    bar.update(percent)
   })
 
   try {
@@ -29,9 +29,7 @@ export const addProgress = async function(response, progress, path) {
 }
 
 const MULTIBAR_OPTS = {
-  format: `  ${green(nodejs)}  {prefix} ${dim(
-    '|',
-  )} {percentageString}%  ${green('{bar}')}`,
+  format: `  ${green(nodejs)}  {prefix}  ${green('{bar}')}`,
   barCompleteChar: '\u2588',
   barIncompleteChar: '\u2591',
   stopOnComplete: true,
@@ -49,8 +47,7 @@ const multibar = new MultiBar(MULTIBAR_OPTS)
 const startBar = function(path) {
   const bar = multibar.create()
   const prefix = getPrefix(path)
-  const percentageString = getPercentageString(0)
-  bar.start(1, 0, { prefix, percentageString })
+  bar.start(1, 0, { prefix })
   return bar
 }
 
@@ -81,19 +78,6 @@ const VERSION_PADDING = 7
 const VERSION_TEXT = 'Node.js'
 const INDEX_TEXT = 'List of Node.js versions'
 const DEFAULT_TEXT = 'Node.js'
-
-const updateBar = function(bar, percent) {
-  const percentageString = getPercentageString(percent)
-  bar.update(percent, { percentageString })
-}
-
-// We cannot use `cli-progress` built-in `{percentage}` placeholder because it
-// lacks padding, i.e. creates jitter
-const getPercentageString = function(percent) {
-  return String(Math.floor(percent * PERCENT_TO_INTEGER)).padStart(2)
-}
-
-const PERCENT_TO_INTEGER = 1e2
 
 // Remove a new progress bar when a download is complete
 const stopBar = function(bar) {
