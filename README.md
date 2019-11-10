@@ -40,19 +40,23 @@ npm install fetch-node-website
 
 ## fetchNodeWebsite(path, options?)
 
-`path`: `string`<br> `options`: `object`<br>_Returns_: `Promise<Stream>`
+`path`: `string`\
+`options`: `object`\
+_Returns_: `Promise<Stream>`
 
 ### options
 
 #### progress
 
-_Type_: `boolean`<br>_Default_: `false`
+_Type_: `boolean`\
+_Default_: `false`
 
 Show a progress bar.
 
 #### mirror
 
-_Type_: `string`<br>_Default_: `https://nodejs.org/dist`
+_Type_: `string`\
+_Default_: `https://nodejs.org/dist`
 
 Base URL. Can be customized (for example `https://npm.taobao.org/mirrors/node`).
 
