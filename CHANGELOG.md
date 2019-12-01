@@ -1,3 +1,9 @@
+# 4.1.1
+
+## Bug fixes
+
+- Fix crash when Node.js binary URL is invalid
+
 # 4.1.0
 
 ## Features
