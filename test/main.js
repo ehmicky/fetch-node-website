@@ -17,9 +17,10 @@ each(
     // not blocked.
     'v12.7.1/node-v12.7.1-linux-x64.tar.gz',
   ],
-  ({ title }, url) => {
+  [{}, { progress: true }],
+  ({ title }, url, opts) => {
     test(`Error request | ${title}`, async t => {
-      await t.throwsAsync(fetchReleases(url))
+      await t.throwsAsync(fetchReleases(url, opts))
     })
   },
 )

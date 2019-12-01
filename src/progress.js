@@ -23,9 +23,9 @@ export const addProgress = async function(response, progress, path) {
 
   try {
     await pEndOfStream(response, { writable: false })
-  } finally {
-    stopBar(bar)
-  }
+  } catch {}
+
+  stopBar(bar)
 }
 
 const MULTIBAR_OPTS = {
