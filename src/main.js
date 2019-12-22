@@ -8,7 +8,7 @@ const fetchNodeWebsite = async function(path, opts) {
   const { mirror, progress } = getOpts(path, opts)
 
   const pathA = path.replace(LEADING_SLASH_REGEXP, '')
-  const response = await got(pathA, { prefixUrl: mirror, stream: true })
+  const response = await got.stream(pathA, { prefixUrl: mirror })
 
   addProgress(response, progress, path)
 
