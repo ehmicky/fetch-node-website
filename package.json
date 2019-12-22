@@ -53,7 +53,6 @@
     "chalk": "^3.0.0",
     "cli-progress": "^3.4.0",
     "core-js": "^3.6.0",
-    "end-of-stream": "^1.4.4",
     "figures": "^3.1.0",
     "got": "10.0.0-alpha.2.2",
     "jest-validate": "^24.9.0"
