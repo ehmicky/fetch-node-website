@@ -1,12 +1,8 @@
-import { promisify } from 'util'
+import { finished } from 'stream'
 
 import { MultiBar } from 'cli-progress'
-// TODO: replace with `Stream.finished()` after dropping support for Node 8/9
-import endOfStream from 'end-of-stream'
 import { green } from 'chalk'
 import { nodejs } from 'figures'
-
-const pEndOfStream = promisify(endOfStream)
 
 // Add CLI progress bar.
 // If there are several downloads in parallel, several bars are shown.
@@ -22,7 +18,7 @@ export const addProgress = async function(response, progress, path) {
   })
 
   try {
-    await pEndOfStream(response, { writable: false })
+    await finished(response, { writable: false })
   } catch {}
 
   stopBar(bar)
