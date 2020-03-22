@@ -3,7 +3,7 @@ import { validate } from 'jest-validate'
 import { getMirrorEnv } from './mirror.js'
 
 // Normalize options and assign default values
-export const getOpts = function(path, opts = {}) {
+export const getOpts = function (path, opts = {}) {
   validateBasic(path, opts)
   validate(opts, { exampleConfig: EXAMPLE_OPTS })
 
@@ -12,7 +12,7 @@ export const getOpts = function(path, opts = {}) {
   return optsA
 }
 
-const validateBasic = function(path) {
+const validateBasic = function (path) {
   if (typeof path !== 'string' || path.trim() === '') {
     throw new TypeError(`Path must be a non-empty string: ${path}`)
   }

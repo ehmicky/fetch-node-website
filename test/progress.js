@@ -24,7 +24,7 @@ each(
     'npm/npm-1.1.0-1.zip',
   ],
   ({ title }, { opts, called }, path) => {
-    test.serial(`Progress | ${title}`, async t => {
+    test.serial(`Progress | ${title}`, async (t) => {
       const spy = sinon.spy(stderr, 'write')
 
       await fetchUrl(path, opts)
@@ -36,7 +36,7 @@ each(
   },
 )
 
-test('Progress bars in parallel', async t => {
+test('Progress bars in parallel', async (t) => {
   const spy = sinon.spy(stderr, 'write')
 
   await Promise.all(

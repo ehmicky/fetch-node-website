@@ -4,7 +4,7 @@ import { getOpts } from './options.js'
 import { addProgress } from './progress.js'
 
 // Make a HTTP GET request towards `https://nodejs.org/dist/...`
-const fetchNodeWebsite = async function(path, opts) {
+const fetchNodeWebsite = async function (path, opts) {
   const { mirror, progress } = getOpts(path, opts)
 
   const pathA = path.replace(LEADING_SLASH_REGEXP, '')

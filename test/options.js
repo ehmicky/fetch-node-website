@@ -13,7 +13,7 @@ each(
     ['/path', { progress: 'invalid' }],
   ],
   ({ title }, path, opts) => {
-    test(`Invalid parameters | ${title}`, async t => {
+    test(`Invalid parameters | ${title}`, async (t) => {
       await t.throwsAsync(fetchReleases(path, opts))
     })
   },

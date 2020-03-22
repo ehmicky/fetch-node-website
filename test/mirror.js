@@ -18,7 +18,7 @@ each(
   ({ title }, mirror, envName) => {
     test.serial(
       `Mirror website as environment variable | ${title}`,
-      async t => {
+      async (t) => {
         // eslint-disable-next-line fp/no-mutation
         env[envName] = mirror
 
@@ -32,7 +32,7 @@ each(
   },
 )
 
-test(`Mirror website as option`, async t => {
+test(`Mirror website as option`, async (t) => {
   const releases = await fetchReleases('index.json', { mirror: MIRROR_PATH })
   t.true(Array.isArray(releases))
 })

@@ -2,7 +2,7 @@ import { env } from 'process'
 
 // The `mirror` option can be specified using the environment variables used
 // by popular Node.js version managers (nvm, n, nodist)
-export const getMirrorEnv = function() {
+export const getMirrorEnv = function () {
   const mirrorName = MIRRORS.find(isDefinedEnv)
 
   if (mirrorName === undefined) {
@@ -13,7 +13,7 @@ export const getMirrorEnv = function() {
   return { mirror }
 }
 
-const isDefinedEnv = function(name) {
+const isDefinedEnv = function (name) {
   return env[name] !== undefined && env[name].trim() !== ''
 }
 
