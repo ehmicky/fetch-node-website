@@ -54,7 +54,7 @@
     "cli-progress": "^3.6.0",
     "core-js": "^3.6.4",
     "figures": "^3.2.0",
-    "got": "^10.6.0",
+    "got": "^10.7.0",
     "jest-validate": "^25.1.0"
   },
   "devDependencies": {
