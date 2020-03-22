@@ -28,7 +28,7 @@ export const addProgress = async function (response, progress, path) {
 }
 
 const MULTIBAR_OPTS = {
-  format: `  ${green(nodejs)}  {prefix}  ${green('{bar}')}`,
+  format: `  ${green(nodejs)}  {prefix}  {bar}`,
   barCompleteChar: '\u2588',
   barIncompleteChar: '\u2591',
   stopOnComplete: true,
