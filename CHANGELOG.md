@@ -1,3 +1,9 @@
+# 5.0.1
+
+## Bug fixes
+
+- Fix terminal color changing on Windows
+
 # 5.0.0
 
 ## Breaking changes
