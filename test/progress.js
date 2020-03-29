@@ -1,8 +1,8 @@
 import { stderr } from 'process'
 
 import test from 'ava'
-import { each } from 'test-each'
 import sinon from 'sinon'
+import { each } from 'test-each'
 
 import { fetchUrl } from './helpers/main.js'
 

@@ -1,8 +1,8 @@
 import { finished } from 'stream'
 import { promisify } from 'util'
 
-import { MultiBar } from 'cli-progress'
 import { green } from 'chalk'
+import { MultiBar } from 'cli-progress'
 import { nodejs } from 'figures'
 
 const pFinished = promisify(finished)
