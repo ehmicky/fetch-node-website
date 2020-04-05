@@ -52,7 +52,7 @@
   "dependencies": {
     "chalk": "^4.0.0",
     "cli-progress": "^3.7.0",
-    "core-js": "^3.6.4",
+    "core-js": "^3.6.5",
     "figures": "^3.2.0",
     "got": "^10.7.0",
     "jest-validate": "^25.2.6"
