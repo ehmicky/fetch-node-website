@@ -51,7 +51,7 @@
   },
   "dependencies": {
     "chalk": "^4.0.0",
-    "cli-progress": "^3.6.1",
+    "cli-progress": "^3.7.0",
     "core-js": "^3.6.4",
     "figures": "^3.2.0",
     "got": "^10.7.0",
