@@ -1,3 +1,9 @@
+# 5.0.2
+
+## Dependencies
+
+- Remove `core-js`
+
 # 5.0.1
 
 ## Bug fixes
