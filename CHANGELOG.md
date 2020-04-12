@@ -1,3 +1,9 @@
+# 5.0.3
+
+## Dependencies
+
+- Fix removing `core-js`
+
 # 5.0.2
 
 ## Dependencies
