@@ -69,6 +69,10 @@ The following environment variables can also be used: `NODE_MIRROR`,
 - [`nvexeca`](https://github.com/ehmicky/nve): Run a specific Node.js version
   (programmatic)
 - [`get-node`](https://github.com/ehmicky/get-node): Download Node.js
+- [`preferred-node-version`](https://github.com/ehmicky/preferred-node-version):
+  Get the preferred Node.js version of a project or user
+- [`node-version-alias`](https://github.com/ehmicky/node-version-alias): Resolve
+  Node.js version aliases like `latest`, `lts` or `erbium`
 - [`normalize-node-version`](https://github.com/ehmicky/normalize-node-version):
   Normalize and validate Node.js versions
 - [`all-node-versions`](https://github.com/ehmicky/all-node-versions): List all
