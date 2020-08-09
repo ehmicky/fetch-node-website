@@ -63,7 +63,7 @@
     "get-stream": "^5.1.0",
     "gulp": "^4.0.2",
     "husky": "^4.2.5",
-    "sinon": "^9.0.2",
+    "sinon": "^9.0.3",
     "test-each": "^2.0.1"
   },
   "engines": {
