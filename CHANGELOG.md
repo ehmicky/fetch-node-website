@@ -51,14 +51,14 @@
 ## Features
 
 - Improve the appearance of the progress bar with the
-  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/master/README.md#progress).
+  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/main/README.md#progress).
 
 # 3.2.1
 
 ## Bug fixes
 
 - The
-  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/master/README.md#progress)
+  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/main/README.md#progress)
   was not working in non-interactive terminals.
 
 # 3.2.0
@@ -66,7 +66,7 @@
 ## Features
 
 - The
-  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/master/README.md#progress)
+  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/main/README.md#progress)
   now displays a progress bar instead of a spinner.
 
 # 3.1.0
@@ -80,7 +80,7 @@
 ## Breaking changes
 
 - Change the
-  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/master/README.md#progress)
+  [`progress` option](https://github.com/ehmicky/fetch-node-website/blob/main/README.md#progress)
   default value from `true` to `false`. That option displays a loading spinner.
 
 # 2.3.1
