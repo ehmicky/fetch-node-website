@@ -55,7 +55,7 @@
     "figures": "^3.2.0",
     "filter-obj": "^2.0.1",
     "got": "^11.7.0",
-    "jest-validate": "^26.5.2"
+    "jest-validate": "^26.5.3"
   },
   "devDependencies": {
     "@ehmicky/dev-tasks": "^0.31.71",
