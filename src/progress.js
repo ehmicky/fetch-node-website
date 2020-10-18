@@ -5,6 +5,7 @@ import { green } from 'chalk'
 import { MultiBar } from 'cli-progress'
 import { nodejs } from 'figures'
 
+// TODO: use `stream/promises` instead once dropping support for Node <15.0.0
 const pFinished = promisify(finished)
 
 // Add CLI progress bar.
