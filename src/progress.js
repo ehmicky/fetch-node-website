@@ -1,12 +1,14 @@
 import { finished } from 'stream'
 import { promisify } from 'util'
 
-import { green } from 'chalk'
 import { MultiBar } from 'cli-progress'
+import colorsOption from 'colors-option'
 import { nodejs } from 'figures'
 
 // TODO: use `stream/promises` instead once dropping support for Node <15.0.0
 const pFinished = promisify(finished)
+
+const { green } = colorsOption()
 
 // Add CLI progress bar.
 // If there are several downloads in parallel, several bars are shown.
