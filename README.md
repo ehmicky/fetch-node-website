@@ -15,7 +15,7 @@ Download release files available on
 <!-- eslint-skip -->
 
 ```js
-const fetchNodeWebsite = require('fetch-node-website')
+import fetchNodeWebsite from 'fetch-node-website'
 
 const stream = await fetchNodeWebsite('v12.8.0/node-v12.8.0-linux-x64.tar.gz')
 
