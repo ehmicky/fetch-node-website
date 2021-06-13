@@ -3,7 +3,7 @@ import { promisify } from 'util'
 
 import { MultiBar } from 'cli-progress'
 import colorsOption from 'colors-option'
-import { nodejs } from 'figures'
+import figures from 'figures'
 
 // TODO: use `stream/promises` instead once dropping support for Node <15.0.0
 const pFinished = promisify(finished)
@@ -31,7 +31,7 @@ export const addProgress = async function (response, progress, path) {
 }
 
 const MULTIBAR_OPTS = {
-  format: `  ${green(nodejs)}  {prefix}  {bar}`,
+  format: `  ${green(figures.nodejs)}  {prefix}  {bar}`,
   barCompleteChar: '\u2588',
   barIncompleteChar: '\u2591',
   stopOnComplete: true,
