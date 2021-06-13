@@ -4,7 +4,8 @@ import { getOpts } from './options.js'
 import { addProgress } from './progress.js'
 
 // Make a HTTP GET request towards `https://nodejs.org/dist/...`
-const fetchNodeWebsite = async function (path, opts) {
+// eslint-disable-next-line import/no-default-export
+export default async function fetchNodeWebsite(path, opts) {
   const { mirror, progress } = getOpts(path, opts)
 
   const pathA = path.replace(LEADING_SLASH_REGEXP, '')
@@ -16,7 +17,3 @@ const fetchNodeWebsite = async function (path, opts) {
 }
 
 const LEADING_SLASH_REGEXP = /^\//u
-
-// We do not use `export default` because Babel transpiles it in a way that
-// requires CommonJS users to `require(...).default` instead of `require(...)`.
-module.exports = fetchNodeWebsite
