@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "cli-progress": "^3.8.2",
-    "colors-option": "^1.0.0",
+    "colors-option": "^2.0.0",
     "figures": "^3.2.0",
     "filter-obj": "^2.0.1",
     "got": "^11.8.2",
