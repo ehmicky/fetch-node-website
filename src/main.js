@@ -4,7 +4,6 @@ import { getOpts } from './options.js'
 import { addProgress } from './progress.js'
 
 // Make a HTTP GET request towards `https://nodejs.org/dist/...`
-// eslint-disable-next-line import/no-default-export
 export default async function fetchNodeWebsite(path, opts) {
   const { mirror, progress } = getOpts(path, opts)
 
