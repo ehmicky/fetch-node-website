@@ -10,11 +10,6 @@
   "scripts": {
     "test": "gulp test"
   },
-  "husky": {
-    "hooks": {
-      "pre-push": "gulp -LL check --full"
-    }
-  },
   "description": "Fetch releases on nodejs.org",
   "keywords": [
     "nodejs",
