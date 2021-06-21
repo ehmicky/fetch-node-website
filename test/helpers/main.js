@@ -1,4 +1,3 @@
-// eslint-disable-next-line node/no-extraneous-import
 import fetchNodeWebsite from 'fetch-node-website'
 import getStream from 'get-stream'
 
