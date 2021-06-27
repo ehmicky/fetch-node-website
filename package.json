@@ -48,7 +48,7 @@
   "dependencies": {
     "cli-progress": "^3.8.2",
     "colors-option": "^2.0.1",
-    "figures": "^3.2.0",
+    "figures": "^4.0.0",
     "filter-obj": "^2.0.1",
     "got": "^11.8.2",
     "jest-validate": "^27.0.2"
