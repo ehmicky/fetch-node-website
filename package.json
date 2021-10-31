@@ -54,7 +54,7 @@
     "jest-validate": "^27.3.1"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^1.0.53",
+    "@ehmicky/dev-tasks": "^1.0.55",
     "get-stream": "^6.0.0",
     "sinon": "^11.1.2",
     "test-each": "^3.0.1"
