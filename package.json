@@ -50,7 +50,7 @@
     "colors-option": "^2.0.1",
     "figures": "^4.0.0",
     "filter-obj": "^3.0.0",
-    "got": "^11.8.2",
+    "got": "^11.8.3",
     "jest-validate": "^27.3.1"
   },
   "devDependencies": {
