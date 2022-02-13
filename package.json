@@ -56,7 +56,7 @@
   "devDependencies": {
     "@ehmicky/dev-tasks": "^1.0.65",
     "get-stream": "^6.0.0",
-    "sinon": "^13.0.0",
+    "sinon": "^13.0.1",
     "test-each": "^4.0.0"
   },
   "engines": {
