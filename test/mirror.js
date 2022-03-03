@@ -5,7 +5,7 @@ import { each } from 'test-each'
 
 import { fetchReleases } from './helpers/main.js'
 
-const MIRROR_PATH = 'https://npm.taobao.org/mirrors/node'
+const MIRROR_PATH = 'https://npmmirror.com/mirrors/node'
 
 each(
   ['', MIRROR_PATH],

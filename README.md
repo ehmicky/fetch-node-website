@@ -24,7 +24,7 @@ const otherStream = await fetchNodeWebsite(
   'v12.8.0/node-v12.8.0-linux-x64.tar.gz',
   {
     progress: true,
-    mirror: 'https://npm.taobao.org/mirrors/node',
+    mirror: 'https://npmmirror.com/mirrors/node',
   },
 )
 ```
@@ -61,7 +61,7 @@ Show a progress bar.
 _Type_: `string`\
 _Default_: `https://nodejs.org/dist`
 
-Base URL. Can be customized (for example `https://npm.taobao.org/mirrors/node`).
+Base URL. Can be customized (for example `https://npmmirror.com/mirrors/node`).
 
 The following environment variables can also be used: `NODE_MIRROR`,
 `NVM_NODEJS_ORG_MIRROR`, `N_NODE_MIRROR` or `NODIST_NODE_MIRROR`.
