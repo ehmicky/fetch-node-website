@@ -57,7 +57,7 @@
     "@ehmicky/dev-tasks": "^1.0.72",
     "get-stream": "^6.0.0",
     "sinon": "^13.0.1",
-    "test-each": "^4.0.0"
+    "test-each": "^5.0.0"
   },
   "engines": {
     "node": ">=14.18.0"
