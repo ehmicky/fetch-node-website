@@ -1,3 +1,20 @@
+# 7.0.0
+
+## Breaking changes
+
+- Minimal supported Node.js version is now `14.18.0`
+
+## Features
+
+- Add TypeScript types
+
+# 6.1.2
+
+## Bug fixes
+
+- The `6.1.0` release should have been a major release since it includes a
+  breaking change. The `6.1.2` release reverts it.
+
 # 6.1.0
 
 ## Features
