@@ -11,9 +11,6 @@ Download release files available on
 
 # Example
 
-<!-- Remove 'eslint-skip' once estree supports top-level await -->
-<!-- eslint-skip -->
-
 ```js
 import fetchNodeWebsite from 'fetch-node-website'
 
