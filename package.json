@@ -47,7 +47,7 @@
     "test": "test"
   },
   "dependencies": {
-    "cli-progress": "^3.11.1",
+    "cli-progress": "^3.11.2",
     "colors-option": "^4.0.0",
     "figures": "^4.0.1",
     "filter-obj": "^3.0.0",
