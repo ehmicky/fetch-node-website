@@ -1,4 +1,4 @@
-import filterObj from 'filter-obj'
+import { excludeKeys } from 'filter-obj'
 import { validate } from 'jest-validate'
 
 import { getMirrorEnv } from './mirror.js'
@@ -8,7 +8,7 @@ export const getOpts = function (path, opts = {}) {
   validateBasic(path, opts)
   validate(opts, { exampleConfig: EXAMPLE_OPTS })
 
-  const optsA = filterObj(opts, isDefined)
+  const optsA = excludeKeys(opts, isUndefined)
   const mirrorEnv = getMirrorEnv()
   const optsB = { ...DEFAULT_OPTS, ...mirrorEnv, ...optsA }
   return optsB
@@ -29,6 +29,6 @@ export const EXAMPLE_OPTS = {
   ...DEFAULT_OPTS,
 }
 
-const isDefined = function (key, value) {
-  return value !== undefined
+const isUndefined = function (key, value) {
+  return value === undefined
 }
