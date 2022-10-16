@@ -9,10 +9,11 @@ each(
     [''],
     [' '],
     [true],
+    ['/path', true],
     ['/path', { mirror: true }],
     ['/path', { progress: 'invalid' }],
   ],
-  ({ title }, path, opts) => {
+  ({ title }, [path, opts]) => {
     test(`Invalid parameters | ${title}`, async (t) => {
       await t.throwsAsync(fetchReleases(path, opts))
     })

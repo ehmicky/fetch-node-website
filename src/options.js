@@ -1,34 +1,34 @@
-import { excludeKeys } from 'filter-obj'
-import { validate } from 'jest-validate'
+import isPlainObj from 'is-plain-obj'
 
-import { getMirrorEnv } from './mirror.js'
+import { getDefaultMirror } from './mirror.js'
 
 // Normalize options and assign default values
 export const getOpts = function (path, opts = {}) {
   validateBasic(path, opts)
-  validate(opts, { exampleConfig: EXAMPLE_OPTS })
-
-  const optsA = excludeKeys(opts, isUndefined)
-  const mirrorEnv = getMirrorEnv()
-  const optsB = { ...DEFAULT_OPTS, ...mirrorEnv, ...optsA }
-  return optsB
+  const { progress = false, mirror = getDefaultMirror() } = opts
+  validateProgress(progress)
+  validateMirror(mirror)
+  return { progress, mirror }
 }
 
-const validateBasic = function (path) {
+const validateBasic = function (path, opts) {
   if (typeof path !== 'string' || path.trim() === '') {
     throw new TypeError(`Path must be a non-empty string: ${path}`)
   }
+
+  if (!isPlainObj(opts)) {
+    throw new TypeError(`Options must be a plain object: ${opts}`)
+  }
 }
 
-export const DEFAULT_OPTS = {
-  progress: false,
-  mirror: 'https://nodejs.org/dist',
+const validateProgress = function (progress) {
+  if (typeof progress !== 'boolean') {
+    throw new TypeError(`Option "progress" must be a boolean: ${progress}`)
+  }
 }
 
-export const EXAMPLE_OPTS = {
-  ...DEFAULT_OPTS,
-}
-
-const isUndefined = function (key, value) {
-  return value === undefined
+const validateMirror = function (mirror) {
+  if (typeof mirror !== 'string') {
+    throw new TypeError(`Option "mirror" must be a string: ${mirror}`)
+  }
 }
