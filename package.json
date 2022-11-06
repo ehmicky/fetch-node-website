@@ -1,6 +1,6 @@
 {
   "name": "fetch-node-website",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "type": "module",
   "exports": {
     "types": "./build/types/main.d.ts",
