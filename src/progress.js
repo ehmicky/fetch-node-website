@@ -1,5 +1,5 @@
-import { finished } from 'stream'
-import { promisify } from 'util'
+import { finished } from 'node:stream'
+import { promisify } from 'node:util'
 
 import { MultiBar } from 'cli-progress'
 import colorsOption from 'colors-option'
