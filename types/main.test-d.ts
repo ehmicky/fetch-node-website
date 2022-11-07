@@ -2,7 +2,7 @@ import { Stream } from 'node:stream'
 
 import { expectError, expectAssignable } from 'tsd'
 
-import fetchNodeWebsite, { Options } from './main.js'
+import fetchNodeWebsite, { Options } from 'fetch-node-website'
 
 expectAssignable<Stream>(await fetchNodeWebsite('path'))
 expectError(await fetchNodeWebsite())
