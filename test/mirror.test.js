@@ -3,7 +3,7 @@ import { env } from 'node:process'
 import test from 'ava'
 import { each } from 'test-each'
 
-import { fetchReleases } from './helpers/main.js'
+import { fetchReleases } from './helpers/main.test.js'
 
 const MIRROR_PATH = 'https://npmmirror.com/mirrors/node'
 

@@ -1,7 +1,7 @@
 import test from 'ava'
 import { each } from 'test-each'
 
-import { fetchReleases } from './helpers/main.js'
+import { fetchReleases } from './helpers/main.test.js'
 
 each(['index.json', '/index.json'], ({ title }, url) => {
   test(`Success request | ${title}`, async (t) => {

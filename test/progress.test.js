@@ -4,7 +4,7 @@ import test from 'ava'
 import sinon from 'sinon'
 import { each } from 'test-each'
 
-import { fetchUrl } from './helpers/main.js'
+import { fetchUrl } from './helpers/main.test.js'
 
 // Tests are not run in an interactive terminal, i.e. progress bars does not
 // show up unless we patch this.
