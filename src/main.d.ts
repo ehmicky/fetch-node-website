@@ -1,4 +1,4 @@
-import { type Stream } from 'node:stream'
+import type { Stream } from 'node:stream'
 
 export interface Options {
   /**
