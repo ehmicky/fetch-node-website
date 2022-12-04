@@ -1,4 +1,4 @@
-import got from 'got'
+import { got } from 'got'
 
 import { getOpts } from './options.js'
 import { addProgress } from './progress.js'
