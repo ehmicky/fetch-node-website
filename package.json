@@ -59,7 +59,7 @@
     "is-plain-obj": "^4.1.0"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^2.0.53",
+    "@ehmicky/dev-tasks": "^2.0.54",
     "@types/node": "^18.11.9",
     "get-stream": "^6.0.0",
     "sinon": "^15.0.0",
