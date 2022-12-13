@@ -12,7 +12,7 @@ const { green } = colorsOption()
 
 // Add CLI progress bar.
 // If there are several downloads in parallel, several bars are shown.
-export const addProgress = async function (response, progress, path) {
+export const addProgress = async (response, progress, path) => {
   if (!progress || !showsBar()) {
     return
   }
@@ -46,7 +46,7 @@ const MULTIBAR_OPTS = {
 const multibar = new MultiBar(MULTIBAR_OPTS)
 
 // Ad a new progress bar when a download starts
-const startBar = function (path) {
+const startBar = (path) => {
   const bar = multibar.create()
   const prefix = getPrefix(path)
   bar.start(1, 0, { prefix })
@@ -54,12 +54,10 @@ const startBar = function (path) {
 }
 
 // `cli-progress` does nothing when not inside a TTY
-const showsBar = function () {
-  return multibar.terminal.isTTY()
-}
+const showsBar = () => multibar.terminal.isTTY()
 
 // Retrieve the text shown before the progress bar
-const getPrefix = function (path) {
+const getPrefix = (path) => {
   const version = VERSION_TEXT_REGEXP.exec(path)
 
   if (version !== null) {
@@ -82,7 +80,7 @@ const INDEX_TEXT = 'List of Node.js versions'
 const DEFAULT_TEXT = 'Node.js'
 
 // Remove a new progress bar when a download is complete
-const stopBar = function (bar) {
+const stopBar = (bar) => {
   bar.stop()
   multibar.remove(bar)
 

@@ -3,7 +3,7 @@ import isPlainObj from 'is-plain-obj'
 import { getDefaultMirror } from './mirror.js'
 
 // Normalize options and assign default values
-export const getOpts = function (path, opts = {}) {
+export const getOpts = (path, opts = {}) => {
   validateBasic(path, opts)
   const { progress = false, mirror = getDefaultMirror() } = opts
   validateProgress(progress)
@@ -11,7 +11,7 @@ export const getOpts = function (path, opts = {}) {
   return { progress, mirror }
 }
 
-const validateBasic = function (path, opts) {
+const validateBasic = (path, opts) => {
   if (typeof path !== 'string' || path.trim() === '') {
     throw new TypeError(`Path must be a non-empty string: ${path}`)
   }
@@ -21,13 +21,13 @@ const validateBasic = function (path, opts) {
   }
 }
 
-const validateProgress = function (progress) {
+const validateProgress = (progress) => {
   if (typeof progress !== 'boolean') {
     throw new TypeError(`Option "progress" must be a boolean: ${progress}`)
   }
 }
 
-const validateMirror = function (mirror) {
+const validateMirror = (mirror) => {
   if (typeof mirror !== 'string') {
     throw new TypeError(`Option "mirror" must be a string: ${mirror}`)
   }

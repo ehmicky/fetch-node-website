@@ -4,7 +4,7 @@ import { getOpts } from './options.js'
 import { addProgress } from './progress.js'
 
 // Make a HTTP GET request towards `https://nodejs.org/dist/...`
-export default async function fetchNodeWebsite(path, opts) {
+const fetchNodeWebsite = async (path, opts) => {
   const { mirror, progress } = getOpts(path, opts)
 
   const pathA = path.replace(LEADING_SLASH_REGEXP, '')
@@ -14,5 +14,7 @@ export default async function fetchNodeWebsite(path, opts) {
 
   return response
 }
+
+export default fetchNodeWebsite
 
 const LEADING_SLASH_REGEXP = /^\//u
