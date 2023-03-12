@@ -51,7 +51,7 @@
     "lib": "src"
   },
   "dependencies": {
-    "cli-progress": "^3.11.2",
+    "cli-progress": "^3.12.0",
     "colors-option": "^4.5.0",
     "figures": "^5.0.0",
     "got": "^12.6.0",
