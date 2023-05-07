@@ -1,12 +1,8 @@
-import { finished } from 'node:stream'
-import { promisify } from 'node:util'
+import { finished } from 'node:stream/promises'
 
 import { MultiBar } from 'cli-progress'
 import colorsOption from 'colors-option'
 import figures from 'figures'
-
-// TODO: use `stream/promises` instead once dropping support for Node <15.0.0
-const pFinished = promisify(finished)
 
 const { green } = colorsOption()
 
@@ -24,7 +20,7 @@ export const addProgress = async (response, progress, path) => {
   })
 
   try {
-    await pFinished(response, { writable: false })
+    await finished(response, { writable: false })
   } catch {}
 
   stopBar(bar)
