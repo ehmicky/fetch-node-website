@@ -1,5 +1,6 @@
+import { text } from 'node:stream/consumers'
+
 import fetchNodeWebsite from 'fetch-node-website'
-import getStream from 'get-stream'
 
 // Call the main code
 export const fetchReleases = async (url, opts) => {
@@ -10,6 +11,6 @@ export const fetchReleases = async (url, opts) => {
 
 export const fetchUrl = async (url, opts) => {
   const response = await fetchNodeWebsite(url, opts)
-  const content = await getStream(response)
+  const content = await text(response)
   return content
 }
