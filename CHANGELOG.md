@@ -1,3 +1,9 @@
+# 8.1.0
+
+## Features
+
+- Add a [`signal` option](README.md#signal) to abort the release download
+
 # 8.0.0
 
 ## Breaking changes

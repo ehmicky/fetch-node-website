@@ -21,3 +21,8 @@ await fetchNodeWebsite('path', { progress: true })
 expectAssignable<Options>({ progress: true })
 // @ts-expect-error
 await fetchNodeWebsite('path', { progress: 'true' })
+
+await fetchNodeWebsite('path', { signal: AbortSignal.abort() })
+expectAssignable<Options>({ signal: AbortSignal.abort() })
+// @ts-expect-error
+await fetchNodeWebsite('path', { signal: 'signal' })

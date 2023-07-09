@@ -5,12 +5,12 @@ import { addProgress } from './progress.js'
 
 // Make a HTTP GET request towards `https://nodejs.org/dist/...`
 const fetchNodeWebsite = async (path, opts) => {
-  const { mirror, progress } = getOpts(path, opts)
+  const { mirror, progress, signal } = getOpts(path, opts)
 
   const pathA = path.replace(LEADING_SLASH_REGEXP, '')
-  const response = await got.stream(pathA, { prefixUrl: mirror })
+  const response = await got.stream(pathA, { prefixUrl: mirror, signal })
 
-  addProgress(response, progress, path)
+  addProgress({ response, progress, path, signal })
 
   return response
 }

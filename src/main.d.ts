@@ -18,6 +18,11 @@ export interface Options {
    * @default `false`
    */
   progress?: boolean
+
+  /**
+   * Cancels the release download when the signal is aborted.
+   */
+  signal?: AbortSignal
 }
 
 /**

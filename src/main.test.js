@@ -24,3 +24,10 @@ each(
     })
   },
 )
+
+test('"signal" cancels the request', async (t) => {
+  const signal = AbortSignal.abort()
+  await t.throwsAsync(fetchReleases('index.json', { signal }), {
+    name: 'AbortError',
+  })
+})

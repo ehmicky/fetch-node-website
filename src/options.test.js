@@ -12,6 +12,7 @@ each(
     ['/path', true],
     ['/path', { mirror: true }],
     ['/path', { progress: 'invalid' }],
+    ['/path', { signal: 'invalid' }],
   ],
   ({ title }, [path, opts]) => {
     test(`Invalid parameters | ${title}`, async (t) => {

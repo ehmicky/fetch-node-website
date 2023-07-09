@@ -7,7 +7,7 @@
 Fetch releases on nodejs.org
 
 Download release files available on
-[`https://nodejs.org/dist/`](https://nodejs.org/dist/).
+[`https://nodejs.org/dist/`](https://nhttps://developer.mozilla.org/en-US/docs/Web/API/AbortSignalodejs.org/dist/).
 
 # Example
 
@@ -66,6 +66,13 @@ Base URL. Can be customized (for example `https://npmmirror.com/mirrors/node`).
 
 The following environment variables can also be used: `NODE_MIRROR`,
 `NVM_NODEJS_ORG_MIRROR`, `N_NODE_MIRROR` or `NODIST_NODE_MIRROR`.
+
+#### signal
+
+_Type_:
+[`AbortSignal`](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal)
+
+Cancels the release download when the signal is aborted.
 
 # See also
 

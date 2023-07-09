@@ -8,8 +8,8 @@ const { green } = colorsOption()
 
 // Add CLI progress bar.
 // If there are several downloads in parallel, several bars are shown.
-export const addProgress = async (response, progress, path) => {
-  if (!progress || !showsBar()) {
+export const addProgress = async ({ response, progress, path, signal }) => {
+  if (!shouldShowProgress(progress, signal)) {
     return
   }
 
@@ -20,7 +20,7 @@ export const addProgress = async (response, progress, path) => {
   })
 
   try {
-    await finished(response, { writable: false })
+    await finished(response, { writable: false, signal })
   } catch {}
 
   stopBar(bar)
@@ -50,7 +50,8 @@ const startBar = (path) => {
 }
 
 // `cli-progress` does nothing when not inside a TTY
-const showsBar = () => multibar.terminal.isTTY()
+const shouldShowProgress = (progress, signal) =>
+  progress && multibar.terminal.isTTY() && !signal?.aborted
 
 // Retrieve the text shown before the progress bar
 const getPrefix = (path) => {
