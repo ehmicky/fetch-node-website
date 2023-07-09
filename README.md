@@ -22,6 +22,7 @@ const otherStream = await fetchNodeWebsite(
   {
     progress: true,
     mirror: 'https://npmmirror.com/mirrors/node',
+    signal: new AbortController().signal,
   },
 )
 ```

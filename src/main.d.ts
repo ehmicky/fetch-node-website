@@ -39,6 +39,7 @@ export interface Options {
  *   {
  *     progress: true,
  *     mirror: 'https://npmmirror.com/mirrors/node',
+ *     signal: new AbortController().signal,
  *   },
  * )
  * ```
