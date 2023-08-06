@@ -42,7 +42,10 @@
   ],
   "license": "Apache-2.0",
   "homepage": "https://www.github.com/ehmicky/fetch-node-website",
-  "repository": "ehmicky/fetch-node-website",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ehmicky/fetch-node-website.git"
+  },
   "bugs": {
     "url": "https://github.com/ehmicky/fetch-node-website/issues"
   },
