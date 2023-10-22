@@ -56,7 +56,7 @@
   "dependencies": {
     "cli-progress": "^3.12.0",
     "colors-option": "^6.0.0",
-    "figures": "^5.0.0",
+    "figures": "^6.0.0",
     "got": "^13.0.0",
     "is-plain-obj": "^4.1.0"
   },
