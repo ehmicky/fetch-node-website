@@ -3,7 +3,7 @@ import { setTimeout as pSetTimeout } from 'node:timers/promises'
 
 import { install } from '@sinonjs/fake-timers'
 import test from 'ava'
-import sinon from 'sinon'
+import { stub } from 'sinon'
 import { each } from 'test-each'
 
 import { fetchUrl } from './helpers/main.test.js'
@@ -27,19 +27,19 @@ each(
   ],
   ({ title }, { opts, called }, path) => {
     test.serial(`Progress | ${title}`, async (t) => {
-      const stub = sinon.stub(stderr, 'write')
+      const stubA = stub(stderr, 'write')
 
       await fetchUrl(path, opts)
 
-      t.is(stub.called, called)
+      t.is(stubA.called, called)
 
-      stub.restore()
+      stubA.restore()
     })
   },
 )
 
 test.serial('Progress bars in parallel', async (t) => {
-  const stub = sinon.stub(stderr, 'write')
+  const stubA = stub(stderr, 'write')
 
   await Promise.all(
     Array.from({ length: 10 }, () =>
@@ -47,24 +47,24 @@ test.serial('Progress bars in parallel', async (t) => {
     ),
   )
 
-  t.true(stub.called)
+  t.true(stubA.called)
 
-  stub.restore()
+  stubA.restore()
 })
 
 test.serial('"signal" cancels the progress bars early', async (t) => {
-  const stub = sinon.stub(stderr, 'write')
+  const stubA = stub(stderr, 'write')
 
   const signal = AbortSignal.abort()
   await t.throwsAsync(fetchUrl('index.json', { progress: true, signal }))
 
-  t.false(stub.called)
+  t.false(stubA.called)
 
-  stub.restore()
+  stubA.restore()
 })
 
 test.serial('"signal" cancels the progress bars later', async (t) => {
-  const stub = sinon.stub(stderr, 'write')
+  const stubA = stub(stderr, 'write')
   const clock = install()
 
   const controller = new AbortController()
@@ -75,10 +75,10 @@ test.serial('"signal" cancels the progress bars later', async (t) => {
     ]),
   )
 
-  t.true(stub.args.some(isProgressBarLine))
+  t.true(stubA.args.some(isProgressBarLine))
 
   clock.uninstall()
-  stub.restore()
+  stubA.restore()
 })
 
 const isProgressBarLine = ([message]) => message.includes('Node.js')
