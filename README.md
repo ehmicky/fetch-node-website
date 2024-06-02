@@ -7,7 +7,7 @@
 Fetch releases on nodejs.org
 
 Download release files available on
-[`https://nodejs.org/dist/`](https://nhttps://developer.mozilla.org/en-US/docs/Web/API/AbortSignalodejs.org/dist/).
+[`https://nodejs.org/dist/`](https://nodejs.org/dist/).
 
 # Hire me
 
