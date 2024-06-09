@@ -64,7 +64,7 @@
     "@ehmicky/dev-tasks": "^2.0.130",
     "@sinonjs/fake-timers": "^11.2.2",
     "@types/node": "^20.8.9",
-    "sinon": "^17.0.0",
+    "sinon": "^18.0.0",
     "test-each": "^7.0.0"
   },
   "engines": {
