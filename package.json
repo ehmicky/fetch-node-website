@@ -61,7 +61,7 @@
     "is-plain-obj": "^4.1.0"
   },
   "devDependencies": {
-    "@ehmicky/dev-tasks": "^3.0.2",
+    "@ehmicky/dev-tasks": "^3.0.3",
     "@sinonjs/fake-timers": "^11.2.2",
     "@types/node": "^20.14.8",
     "sinon": "^18.0.0",
