@@ -63,7 +63,7 @@
   "devDependencies": {
     "@ehmicky/dev-tasks": "^3.0.5",
     "@sinonjs/fake-timers": "^11.2.2",
-    "@types/node": "^20.14.10",
+    "@types/node": "^22.1.0",
     "sinon": "^18.0.0",
     "test-each": "^7.0.0"
   },
