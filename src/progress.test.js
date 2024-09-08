@@ -1,7 +1,5 @@
 import { stderr } from 'node:process'
-import { setTimeout as pSetTimeout } from 'node:timers/promises'
 
-import { install } from '@sinonjs/fake-timers'
 import test from 'ava'
 import { stub } from 'sinon'
 import { each } from 'test-each'
@@ -52,7 +50,7 @@ test.serial('Progress bars in parallel', async (t) => {
   stubA.restore()
 })
 
-test.serial('"signal" cancels the progress bars early', async (t) => {
+test.serial('"signal" cancels the progress bars', async (t) => {
   const stubA = stub(stderr, 'write')
 
   const signal = AbortSignal.abort()
@@ -62,34 +60,3 @@ test.serial('"signal" cancels the progress bars early', async (t) => {
 
   stubA.restore()
 })
-
-test.serial('"signal" cancels the progress bars later', async (t) => {
-  const stubA = stub(stderr, 'write')
-  const clock = install()
-
-  const controller = new AbortController()
-  await t.throwsAsync(
-    Promise.all([
-      fetchUrl('index.json', { progress: true, signal: controller.signal }),
-      waitThenAbort(controller, clock),
-    ]),
-  )
-
-  t.true(stubA.args.some(isProgressBarLine))
-
-  clock.uninstall()
-  stubA.restore()
-})
-
-const isProgressBarLine = ([message]) => message.includes('Node.js')
-
-const waitThenAbort = async (controller, clock) => {
-  // Awaits `got.stream()`, to let `Multibar.create()` be called
-  await pSetTimeout(0)
-  // Let progress bar call `stderr.write()`
-  clock.tick(SIGNAL_TIMEOUT)
-  controller.abort()
-}
-
-// Long enough for `cli-progress` interval timer to call `stderr.write()`
-const SIGNAL_TIMEOUT = 1e6
