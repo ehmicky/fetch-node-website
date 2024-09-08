@@ -26,6 +26,18 @@ export const addProgress = async ({ response, progress, path, signal }) => {
   stopBar(bar)
 }
 
+// `cli-progress` does nothing when not inside a TTY
+const shouldShowProgress = (progress, signal) =>
+  progress && multibar.terminal.isTTY() && !signal?.aborted
+
+// Ad a new progress bar when a download starts
+const startBar = (path) => {
+  const bar = multibar.create()
+  const prefix = getPrefix(path)
+  bar.start(1, 0, { prefix })
+  return bar
+}
+
 const MULTIBAR_OPTS = {
   format: `  ${green(figures.nodejs)}  {prefix}  {bar}`,
   barCompleteChar: '\u2588',
@@ -40,18 +52,6 @@ const MULTIBAR_OPTS = {
 // safe as a global variable. We need it as a global variable so concurrent
 // calls use the same MultiBar.
 const multibar = new MultiBar(MULTIBAR_OPTS)
-
-// Ad a new progress bar when a download starts
-const startBar = (path) => {
-  const bar = multibar.create()
-  const prefix = getPrefix(path)
-  bar.start(1, 0, { prefix })
-  return bar
-}
-
-// `cli-progress` does nothing when not inside a TTY
-const shouldShowProgress = (progress, signal) =>
-  progress && multibar.terminal.isTTY() && !signal?.aborted
 
 // Retrieve the text shown before the progress bar
 const getPrefix = (path) => {
