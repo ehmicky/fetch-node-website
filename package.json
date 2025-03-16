@@ -65,7 +65,7 @@
     "@ehmicky/eslint-config": "^20.0.30",
     "@ehmicky/prettier-config": "^1.0.5",
     "@types/node": "^22.13.10",
-    "sinon": "^19.0.2",
+    "sinon": "^19.0.4",
     "test-each": "^7.0.0"
   },
   "engines": {
